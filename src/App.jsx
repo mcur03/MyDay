@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import ListaTareas from './components/ListaTareas';
 
 const App = () => {
@@ -13,19 +13,29 @@ const App = () => {
     }
   };
 
+    // Función para eliminar una tarea
+    const eliminarTarea = (id) => {
+      const tareasFiltradas = tareas.filter((tarea) => tarea.id !== id); // Filtrar la tarea por su ID
+      setTareas(tareasFiltradas);
+    };
+
   return (
     <div>
-      <h1>Gestor de Tareas</h1>
+      <h1>Mi Día</h1>
+      <p>Todas mis tareas en un solo lugar</p>
       <input
         type="text"
         value={nuevaTarea}
         onChange={(e) => setNuevaTarea(e.target.value)}
         placeholder="Escribe una nueva tarea"
-        onKeyDown={(e) => e.key === 'Enter' && agregarTarea()}
+        onKeyDown={(e) => e.key === 'Enter' && agregarTarea()} // Agregar tarea cuando el usuario presiona Enter
       />
-      <ListaTareas tareas={tareas} setTareas={setTareas} />
+      {/* Componente ListaTareas, al que se le pasa la lista de tareas y la función para eliminar  */}
+      <ListaTareas tareas={tareas}  eliminarTarea={eliminarTarea}/>  
     </div>
   );
 };
 
 export default App;
+
+// setTareas={setTareas}

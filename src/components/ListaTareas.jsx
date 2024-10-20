@@ -1,21 +1,7 @@
 import React from 'react';
 import Tarea from './Tarea';
 
-const ListaTareas = ({ tareas, setTareas }) => {
-  const alternarCompletada = (id) => {
-    const tareasActualizadas = tareas.map((tarea) => {
-      if (tarea.id === id) {
-        return { ...tarea, completada: !tarea.completada };
-      }
-      return tarea;
-    });
-    setTareas(tareasActualizadas);
-  };
-
-  const eliminarTarea = (id) => {
-    const tareasActualizadas = tareas.filter((tarea) => tarea.id !== id);
-    setTareas(tareasActualizadas);
-  };
+const ListaTareas = ({ tareas, eliminarTarea }) => {
 
   return (
     <ul>
@@ -23,7 +9,7 @@ const ListaTareas = ({ tareas, setTareas }) => {
         <Tarea
           key={tarea.id}
           tarea={tarea}
-          alternarCompletada={alternarCompletada}
+        //   alternarCompletada={alternarCompletada}
           eliminarTarea={eliminarTarea}
         />
       ))}
@@ -32,3 +18,27 @@ const ListaTareas = ({ tareas, setTareas }) => {
 };
 
 export default ListaTareas;
+
+
+
+
+
+
+
+
+
+
+// const alternarCompletada = (id) => {
+//     const tareasActualizadas = tareas.map((tarea) => {
+//       if (tarea.id === id) {
+//         return { ...tarea, completada: !tarea.completada };
+//       }
+//       return tarea;
+//     });
+//     setTareas(tareasActualizadas);
+//   };
+
+//   const eliminarTarea = (id) => {
+//     const tareasActualizadas = tareas.filter((tarea) => tarea.id !== id);
+//     setTareas(tareasActualizadas);
+//   };
