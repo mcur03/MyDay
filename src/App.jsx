@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import ListaTareas from './components/ListaTareas';
 import PiePagina from './components/PiePagina';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -10,8 +10,10 @@ const App = () => {
   const agregarTarea = () => {
     if (nuevaTarea.trim()) {
       const nueva = { id: Date.now(), titulo: nuevaTarea.trim(), completada: false };
-      setTareas([...tareas, nueva]);
+      const nuevasTareas = [...tareas, nueva];
+      setTareas(nuevasTareas);
       setNuevaTarea('');
+      guardarTareasPendientes(nuevasTareas);  // Guardar en localStorage
     }
   };
 
@@ -21,12 +23,14 @@ const App = () => {
         tarea.id === id ? { ...tarea, titulo: nuevoTitulo } : tarea
       );
       setTareas(tareasActualizadas);
+      guardarTareasPendientes(tareasActualizadas);  // Guardar en localStorage
     };
 
     // Función para eliminar una tarea
     const eliminarTarea = (id) => {
       const tareasFiltradas = tareas.filter((tarea) => tarea.id !== id); // Filtrar la tarea por su ID
       setTareas(tareasFiltradas);
+      guardarTareasPendientes(tareasFiltradas);  // Guardar en localStorage
     };
 
   // Función para alternar el estado de completada de una tarea
@@ -35,6 +39,7 @@ const App = () => {
         tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
       );
       setTareas(tareasActualizadas);
+      guardarTareasPendientes(tareasActualizadas);  // Guardar en localStorage
     };
 
       // Función para filtrar las tareas según el estado
@@ -52,7 +57,22 @@ const App = () => {
     const eliminarTareasCompletadas = () => {
       const tareasNoCompletadas = tareas.filter(tarea => !tarea.completada);
       setTareas(tareasNoCompletadas);
+      guardarTareasPendientes(tareasNoCompletadas);  // Guardar en localStorage
     };
+
+      // Guardar las tareas pendientes en localStorage
+  const guardarTareasPendientes = (tareas) => {
+    const tareasPendientes = tareas.filter(tarea => !tarea.completada);  // Solo guardar tareas pendientes
+    localStorage.setItem('tareasPendientes', JSON.stringify(tareasPendientes));
+  };
+
+  // Cargar las tareas pendientes desde localStorage cuando la app se inicia
+  useEffect(() => {
+    const tareasGuardadas = localStorage.getItem('tareasPendientes');
+    if (tareasGuardadas) {
+      setTareas(JSON.parse(tareasGuardadas));
+    }
+  }, []);  // Solo se ejecuta una vez al cargar el componente
 
   return (
     <Router>
@@ -67,10 +87,6 @@ const App = () => {
           onKeyDown={(e) => e.key === 'Enter' && agregarTarea()} // Agregar tarea cuando el usuario presiona Enter
         />
 
-        {/* Botón para eliminar tareas completadas */}
-        {tareas.some(tarea => tarea.completada) && (
-          <button onClick={eliminarTareasCompletadas}>Eliminar tareas completadas</button>
-        )}
         
         {/* Renderizar la lista de tareas según la ruta */}
         <Routes>
@@ -83,7 +99,9 @@ const App = () => {
         </Routes>
 
         {/* Mostrar PiePagina solo si hay al menos una tarea */}
-        {tareas.length > 0 && <PiePagina tareas={tareas} />}
+        {tareas.length > 0 && <PiePagina tareas={tareas} 
+        eliminarTareasCompletadas={eliminarTareasCompletadas} 
+        />}
       </div>
     </Router>
   );
