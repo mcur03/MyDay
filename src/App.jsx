@@ -29,6 +29,7 @@ const App = () => {
       setTareas(tareasFiltradas);
     };
 
+  // Función para alternar el estado de completada de una tarea
     const alternarCompletada = (id) => {
       const tareasActualizadas = tareas.map((tarea) =>
         tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
@@ -47,6 +48,12 @@ const App = () => {
     return tareas; // Si el filtro es "todas"
   };
 
+    // Función para eliminar todas las tareas completadas
+    const eliminarTareasCompletadas = () => {
+      const tareasNoCompletadas = tareas.filter(tarea => !tarea.completada);
+      setTareas(tareasNoCompletadas);
+    };
+
   return (
     <Router>
       <div>
@@ -59,6 +66,12 @@ const App = () => {
           placeholder="Escribe una nueva tarea"
           onKeyDown={(e) => e.key === 'Enter' && agregarTarea()} // Agregar tarea cuando el usuario presiona Enter
         />
+
+        {/* Botón para eliminar tareas completadas */}
+        {tareas.some(tarea => tarea.completada) && (
+          <button onClick={eliminarTareasCompletadas}>Eliminar tareas completadas</button>
+        )}
+        
         {/* Renderizar la lista de tareas según la ruta */}
         <Routes>
           <Route path="/all" element={<ListaTareas tareas={obtenerTareasFiltradas('todas')} eliminarTarea={eliminarTarea} actualizarTarea={actualizarTarea} alternarCompletada={alternarCompletada} />} />
