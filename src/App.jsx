@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TareasController from './components/TareasController';
 import InputTarea from './components/InputTarea';
 
+import './style.css'
+
 const App = () => {
   const [tareas, setTareas] = useState([]);  // Estado para almacenar la lista de tareas
   const [nuevaTarea, setNuevaTarea] = useState('');  // Estado para la nueva tarea
@@ -25,8 +27,8 @@ const App = () => {
    
   return (
     <Router>
-      <div>
-        <h1>Mi Día</h1>
+      <div className='contInput'>
+      <h1>Mi Día</h1>
         <p>Todas mis tareas en un solo lugar</p>
 
         <InputTarea
@@ -35,7 +37,8 @@ const App = () => {
           agregarTarea={agregarTarea}
           
         />
-        
+      </div>
+      <div className='contMain'>
         {/* Renderizar la lista de tareas según la ruta */}
         <Routes>
           <Route path="/all" element={<ListaTareas tareas={obtenerTareasFiltradas('todas')} eliminarTarea={eliminarTarea} actualizarTarea={actualizarTarea} alternarCompletada={alternarCompletada} />} />

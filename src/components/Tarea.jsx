@@ -45,22 +45,6 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) =>
     };
   }, [enEdicion]);
 
-    // let clickTimeout = null;
-
-    // const manejarClic = () => {
-    //   if (clickTimeout) {
-    //     // Si ya hubo un clic reciente, lo tratamos como doble clic
-    //     clearTimeout(clickTimeout);
-    //     clickTimeout = null;
-    //     activarEdicion();
-    //   } else {
-    //     // Si no, esperamos a ver si se hace un segundo clic
-    //     clickTimeout = setTimeout(() => {
-    //       clickTimeout = null;
-    //     }, 300); // El tiempo (en milisegundos) entre clics para ser considerado un doble clic
-    //   }
-    // };
-
     return (
     <li className={tarea.completada ? 'completada' : ''}>
         {!enEdicion ? (
@@ -71,12 +55,13 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) =>
                     onChange={() => alternarCompletada(tarea.id)}
                 />
                 {/* Hacer doble clic activa el modo de edición */}
-                <span onClick={activarEdicion}>{tarea.titulo}</span>
+                <span className='span-lista-tarea' onClick={activarEdicion}>{tarea.titulo}</span>
                 <button className="eliminar-boton" onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
             </>
         ) : (
           // Mostrar el campo de texto cuando la tarea está en modo de edición
             <input
+                className='input-editar-tarea'
                 ref={inputRef}
                 type="text"
                 value={nuevoTitulo}

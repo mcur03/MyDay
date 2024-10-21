@@ -18,7 +18,7 @@ const PiePagina = ({ tareas, eliminarTareasCompletadas }) => {
         </div>
         {/* Botón para eliminar tareas completadas */}
         {tareas.some(tarea => tarea.completada) && (
-            <button onClick={eliminarTareasCompletadas}>Eliminar tareas completadas</button>
+            <button className='btneliminarTareasCompletadas' onClick={eliminarTareasCompletadas}>Eliminar tareas completadas</button>
         )}
 
     </footer>
