@@ -2,8 +2,7 @@
 .eliminar-boton {
   display: none;
 }
-li {
-  display: inline-block; /* O prueba con block */
+li { /* O prueba con block */
   color: mediumorchid;
 }
 /* Mostrar el botón eliminar solo cuando el mouse esté sobre el li */

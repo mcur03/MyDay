@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import ListaTareas from './components/ListaTareas';
+import PiePagina from './components/PiePagina';
 
 const App = () => {
   const [tareas, setTareas] = useState([]);  // Estado para almacenar la lista de tareas
@@ -46,7 +47,9 @@ const App = () => {
         onKeyDown={(e) => e.key === 'Enter' && agregarTarea()} // Agregar tarea cuando el usuario presiona Enter
       />
       {/* Componente ListaTareas, al que se le pasa la lista de tareas y la función para eliminar  */}
-      <ListaTareas tareas={tareas}  eliminarTarea={eliminarTarea} actualizarTarea={actualizarTarea} alternarCompletada={alternarCompletada} />  
+      <ListaTareas tareas={tareas}  eliminarTarea={eliminarTarea} actualizarTarea={actualizarTarea} alternarCompletada={alternarCompletada} />
+       {/* Mostrar PiePagina solo si hay al menos una tarea */}
+       {tareas.length > 0 && <PiePagina tareas={tareas} />}
     </div>
   );
 };
