@@ -1,7 +1,7 @@
 import React from 'react';
 import Tarea from './Tarea';
 
-const ListaTareas = ({ tareas, eliminarTarea }) => {
+const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea, alternarCompletada }) => {
 
   return (
     <ul>
@@ -9,8 +9,9 @@ const ListaTareas = ({ tareas, eliminarTarea }) => {
         <Tarea
           key={tarea.id}
           tarea={tarea}
-        //   alternarCompletada={alternarCompletada}
+          alternarCompletada={alternarCompletada}
           eliminarTarea={eliminarTarea}
+          actualizarTarea={actualizarTarea}
         />
       ))}
     </ul>

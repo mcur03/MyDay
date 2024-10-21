@@ -1,0 +1,12 @@
+/* Ocultar el botón eliminar por defecto */
+.eliminar-boton {
+  display: none;
+}
+li {
+  display: inline-block; /* O prueba con block */
+  color: mediumorchid;
+}
+/* Mostrar el botón eliminar solo cuando el mouse esté sobre el li */
+li:hover .eliminar-boton {
+  display: inline-block;
+}
