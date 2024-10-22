@@ -1,0 +1,127 @@
+*{
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+
+.contInput{
+    background-color:#3E22FF;
+    padding: 4rem 0 2rem 20rem;
+}
+
+h1{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 4rem;
+    font-style: normal;
+    color: #FFFFFF;  
+}
+
+p{
+    color: #FFFFFF;
+}
+
+.input-tareas{
+    width: 78%;
+    height: 7vh;
+    margin-top: 2rem;
+    border:  none;
+    border-radius: 15px;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+.input-tareas::placeholder {
+    color: rgba(128, 128, 128, 0.612);
+}
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+li{
+    list-style-type: none;
+}
+
+span{
+    margin-left: 0.5rem
+}
+
+.contMain{
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+    margin-left: 21rem;
+    border: 1px solid rgba(128, 128, 128, 0.415);
+    box-shadow: 1px 1px 10px gray;
+    padding: 2rem;
+    position: relative;
+    left: -1rem;
+    top: -1rem;
+    text-decoration: none;
+}
+
+footer{
+    display: flex;
+    gap: 2rem;
+}
+
+  
+  /* Si quieres que toda la línea (li) tenga un estilo diferente cuando esté completada */
+  .completada {
+    text-decoration: line-through;
+    color: rgba(128, 128, 128, 0.786);
+  }
+
+  .eliminar-boton {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 1px 3px 1px 3px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  
+  .eliminar-boton:hover {
+    background-color: darkred;
+  }  
+
+.span-lista-tarea{
+    padding: 2px;
+    width: 3rem;
+}
+
+.lista-tareas{
+    background-color: #3E22FF;
+}
+
+.input-editar-tarea{
+    border: none;
+    padding: 3px;
+    margin-left: 2.5rem;
+}
+
+.btneliminarTareasCompletadas{
+    border: none;
+    font-size: medium;
+    background-color: #FFFFFF;
+    margin-left: 1.5rem;
+}
+
+
+
+/* Ocultar el checkbox nativo */
+
+  a {
+    text-decoration: none;
+    margin-left: 1.5rem;
+  }
