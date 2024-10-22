@@ -14,7 +14,7 @@ const PiePagina = ({ tareas, eliminarTareasCompletadas }) => {
 
         {/* Enlaces para los filtros en el pie de página */}
         <div>
-            <Link to="/all">Todas</Link> | <Link to="/pending">Pendientes</Link> | <Link to="/completed">Completadas</Link>
+            <Link to="/all">Todas</Link>  <Link to="/pending">Pendientes</Link> <Link to="/completed">Completadas</Link>
         </div>
         {/* Botón para eliminar tareas completadas */}
         {tareas.some(tarea => tarea.completada) && (

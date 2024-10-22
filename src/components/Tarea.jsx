@@ -49,13 +49,16 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) =>
     <li className={tarea.completada ? 'completada' : ''}>
         {!enEdicion ? (
             <>
-                <input
-                    type="checkbox"
-                    checked={tarea.completada}
-                    onChange={() => alternarCompletada(tarea.id)}
-                />
+                <label className="custom-checkbox">
+                    <input
+                        type="checkbox"
+                        checked={tarea.completada}
+                        onChange={() => alternarCompletada(tarea.id)}
+                    />
+                    <span className="checkmark"></span>
+                </label>
                 {/* Hacer doble clic activa el modo de edición */}
-                <span className='span-lista-tarea' onClick={activarEdicion}>{tarea.titulo}</span>
+                <span className='span-lista-tarea' onDoubleClick={activarEdicion} autoFocus>{tarea.titulo}</span>
                 <button className="eliminar-boton" onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
             </>
         ) : (

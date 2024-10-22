@@ -66,6 +66,7 @@ span{
     position: relative;
     left: -1rem;
     top: -1rem;
+    text-decoration: none;
 }
 
 footer{
@@ -77,7 +78,7 @@ footer{
   /* Si quieres que toda la línea (li) tenga un estilo diferente cuando esté completada */
   .completada {
     text-decoration: line-through;
-    color: gray;
+    color: rgba(128, 128, 128, 0.786);
   }
 
   .eliminar-boton {
@@ -96,15 +97,31 @@ footer{
 
 .span-lista-tarea{
     padding: 2px;
+    width: 3rem;
+}
+
+.lista-tareas{
+    background-color: #3E22FF;
 }
 
 .input-editar-tarea{
     border: none;
-    margin-left: 1.3rem;
+    padding: 3px;
+    margin-left: 2.5rem;
 }
 
 .btneliminarTareasCompletadas{
     border: none;
     font-size: medium;
     background-color: #FFFFFF;
+    margin-left: 1.5rem;
 }
+
+
+
+/* Ocultar el checkbox nativo */
+
+  a {
+    text-decoration: none;
+    margin-left: 1.5rem;
+  }

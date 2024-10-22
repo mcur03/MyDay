@@ -10,6 +10,7 @@ import './style.css'
 const App = () => {
   const [tareas, setTareas] = useState([]);  // Estado para almacenar la lista de tareas
   const [nuevaTarea, setNuevaTarea] = useState('');  // Estado para la nueva tarea
+  
 
   const{
     agregarTarea,
@@ -38,6 +39,7 @@ const App = () => {
           
         />
       </div>
+      {tareas.length > 0 && (
       <div className='contMain'>
         {/* Renderizar la lista de tareas según la ruta */}
         <Routes>
@@ -52,6 +54,7 @@ const App = () => {
         eliminarTareasCompletadas={eliminarTareasCompletadas} 
         />}
       </div>
+      )}
     </Router>
   );
 };
