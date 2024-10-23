@@ -1,6 +1,7 @@
 import React from 'react';
 import Tarea from './Tarea';
 
+// Componente que se encarga de renderizar una lista de tareas. 
 const ListaTareas = ({ tareas, eliminarTarea, actualizarTarea, alternarCompletada }) => {
 
   return (

@@ -1,8 +1,9 @@
 // import { useState } from 'react';
-
+// Componente que contiene la logica principal para manejar las tareas
 const TareasController = (tareas, setTareas, setNuevaTarea) => {
+  
   const agregarTarea = (nuevaTarea) => {
-    if (nuevaTarea.trim()) {
+    if (nuevaTarea.trim()) { // asegura que no se guande tareas vacias o con solo espacio
       const nueva = { id: Date.now(), titulo: nuevaTarea.trim(), completada: false };
       const nuevasTareas = [...tareas, nueva];
       setTareas(nuevasTareas);

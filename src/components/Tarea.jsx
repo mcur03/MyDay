@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './tarea.css'
 
+// Componente que muestra una tarea individual
 const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) => {
     const [enEdicion, setEnEdicion] = useState(false); // Estado para controlar si la tarea está en modo edición
     const [nuevoTitulo, setNuevoTitulo] = useState(tarea.titulo); // Estado para almacenar el título mientras se edita
 
+    // Para hacer referencia directa al campo de entrada.
     const inputRef = useRef(null);
+
       // Activar el modo de edición al hacer doble clic en la tarea
     const activarEdicion = () => {
         console.log('Activando modo edición');
@@ -39,7 +42,7 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) =>
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup: remover el listener cuando el componente se desmonta
+    // Limpiar el listener cuando el componente se desmonta
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -59,7 +62,7 @@ const Tarea = ({ tarea, eliminarTarea, actualizarTarea, alternarCompletada }) =>
                 </label>
                 {/* Hacer doble clic activa el modo de edición */}
                 <span className='span-lista-tarea' onDoubleClick={activarEdicion} autoFocus>{tarea.titulo}</span>
-                <button className="eliminar-boton" onClick={() => eliminarTarea(tarea.id)}>Eliminar</button>
+                <button className="eliminar-boton" onClick={() => eliminarTarea(tarea.id)}>❌</button>
             </>
         ) : (
           // Mostrar el campo de texto cuando la tarea está en modo de edición

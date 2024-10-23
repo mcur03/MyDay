@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'; // para crear enlaces de navegación
+// Componentge que se encarga de mostrar el pie de pagina
 const PiePagina = ({ tareas, eliminarTareasCompletadas }) => {
 
   // Contar cuántas tareas no están completadas
