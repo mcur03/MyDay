@@ -48,8 +48,18 @@ li{
     list-style-type: none;
 }
 
+/* Ocultar el botón eliminar por defecto */
+.eliminar-boton {
+    display: none;
+  }
+  /* Mostrar el botón eliminar solo cuando el mouse esté sobre el li */
+  li:hover .eliminar-boton {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
 span{
-    margin-left: 0.5rem
+    margin-left: 0.5rem;
 }
 
 .contMain{
@@ -82,26 +92,21 @@ footer{
   }
 
   .eliminar-boton {
-    background-color: red;
+    background-color: white;
+    width: 1rem;
     color: white;
     border: none;
     cursor: pointer;
-    padding: 1px 3px 1px 3px;
-    border-radius: 5px;
-    margin-left: 10px;
+    padding: 1px;
+    border-radius: 50px;
   }
   
-  .eliminar-boton:hover {
-    background-color: darkred;
-  }  
+  /* .eliminar-boton:hover {
+    color: darkred;
+  }   */
 
 .span-lista-tarea{
-    padding: 2px;
-    width: 3rem;
-}
-
-.lista-tareas{
-    background-color: #3E22FF;
+    padding: 2px 0 2px 0;
 }
 
 .input-editar-tarea{

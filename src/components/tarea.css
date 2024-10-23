@@ -1,11 +1,4 @@
-/* Ocultar el botón eliminar por defecto */
-.eliminar-boton {
-  display: none;
-}
-/* Mostrar el botón eliminar solo cuando el mouse esté sobre el li */
-li:hover .eliminar-boton {
-  display: inline-block;
-}
+
 
 
 /* Ajustar el label para que el contenido esté alineado verticalmente */
